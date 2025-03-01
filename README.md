@@ -45,16 +45,18 @@ services:
     labels:
       - "traefik.enable=true"
       
-      # Webinterface Router                       # Domain goes here #
+      # Nextcloud Router                         # Domain goes here #
       - "traefik.http.routers.nextcloud.rule=Host(`YOUR.COOL.DOMAIN`)"
+      # Name of whatever your 443/TCP entrypoint is called. Most use "web-secure", I use "https".
       - "traefik.http.routers.nextcloud.entrypoints=https"
       - "traefik.http.routers.nextcloud.tls=true"
+      # Name of the cert-resolver you configured for traefik.
       - "traefik.http.routers.nextcloud.tls.certresolver=lets-encrypt"
       - "traefik.http.routers.nextcloud.service=nextcloud-http"
-
       # Service
       - "traefik.http.services.nextcloud-http.loadbalancer.server.port=80"
 
+  # A secondary container that runs the cron background jobs. This barely adds any load and is what nextcloud officially recommends.
   cron:
     image: nextcloud:apache
     restart: unless-stopped
