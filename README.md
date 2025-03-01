@@ -1,7 +1,9 @@
 # nextcloud-docker-traefik
-Nextcloud ``docker-compose`` for use with an existing Traefik reverse proxy
+Nextcloud ``docker-compose`` for use with an existing Traefik reverse proxy.
 
-**Absolutely make sure you set the MySQL passwords, your domain, traefik entrypoint and cert-resolver**
+**Absolutely make sure you set the MySQL passwords, your domain, traefik entrypoint and cert-resolver !**
+After the initial setup, you can change the ``Background jobs`` setting in the admin panel to ``Cron``.
+![image](https://github.com/user-attachments/assets/dba2418a-fb24-4637-8431-93e2695ed25b)
 
 ```yaml
 # Set MySQL passwords, domain, entrypoint and cert-resolver
