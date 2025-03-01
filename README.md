@@ -1,5 +1,5 @@
 # nextcloud-docker-traefik
-Nextcloud docker stack for use with an existing Traefik reverse proxy
+Nextcloud ``docker-compose`` for use with an existing Traefik reverse proxy
 
 **Absolutely make sure you set the MySQL passwords, your domain, traefik entrypoint and cert-resolver**
 
@@ -22,7 +22,7 @@ services:
       - MYSQL_USER=nextcloud
 
   app:
-    image: nextcloud:31.0.0-apache
+    image: nextcloud:apache
     restart: unless-stopped
     networks:
       - nextcloud
@@ -51,7 +51,7 @@ services:
       - "traefik.http.services.nextcloud-http.loadbalancer.server.port=80"
 
   cron:
-    image: nextcloud:31.0.0-apache
+    image: nextcloud:apache
     restart: unless-stopped
     networks:
       - nextcloud
